@@ -5,8 +5,8 @@ parcel_weight = 0
 stop_program = False
 parcels_sent = 0
 parcel_number = 1
-biggest_gap_in_weight = maximum_weight
-parcel_with_biggest_gap = 0
+biggest_gap_in_weight = 0
+parcel_with_biggest_gap = 1
 
 while not stop_program:
     element = input("Podaj wagę (lub 'q' aby zakończyć): ")
@@ -36,10 +36,11 @@ if parcels_sent > 0 or stop_program:
     print(f"Wysłano kilogramów: {kilograms_sent}")
     print(f"Ilość wysłanych paczek: {parcels_sent}")
     print(f"Suma pustych kilogramów: {parcels_sent * maximum_weight - kilograms_sent}")
+    print(f"Paczka z najwieksza iloscia pustych kg: {parcel_with_biggest_gap}")
     if parcel_with_biggest_gap != 0:
-        print(f"Najwięcej pustych kilogramów ma paczka {parcel_with_biggest_gap} ({maximum_weight - biggest_gap_in_weight}kg)")
+        print(f"Najwięcej pustych kilogramów ma paczka {parcel_with_biggest_gap} ({biggest_gap_in_weight}kg)")
 else:
     if parcels_sent == 0 and parcel_with_biggest_gap != 0:
-        print(f"Najwięcej pustych kilogramów ma paczka {parcel_with_biggest_gap} ({maximum_weight - biggest_gap_in_weight}kg)")
+        print(f"Najwięcej pustych kilogramów ma paczka {parcel_with_biggest_gap} ({biggest_gap_in_weight}kg)")
     else:
         print("Nie zostały wysłane żadne paczki.")
