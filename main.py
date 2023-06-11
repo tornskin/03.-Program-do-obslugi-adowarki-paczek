@@ -29,6 +29,11 @@ while not stop_program:
                 parcel_weight = 0
                 parcel_number += 1
             parcel_weight += element
+            '''biggest_gap_in_weight = maximum_weight - parcel_weight
+            parcel_with_biggest_gap = parcel_number  
+            wygląda na to że porównanie dla pustych paczek należy dodać po
+            dodaniu elementu do paczki - ten kod liczy dobrze, ale za każdym razem bierze puste kg ostatniej paczki nie 
+            porównując przez co if sprawdzający jest nadpisywany'''
 
 if parcels_sent > 0 or stop_program:
     parcels_sent += 1
