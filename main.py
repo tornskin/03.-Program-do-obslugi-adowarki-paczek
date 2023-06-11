@@ -5,7 +5,7 @@ parcel_weight = 0
 stop_program = False
 parcels_sent = 0
 parcel_number = 1
-biggest_gap_in_weight = 0
+biggest_gap_in_weight = maximum_weight
 parcel_with_biggest_gap = 1
 
 while not stop_program:
