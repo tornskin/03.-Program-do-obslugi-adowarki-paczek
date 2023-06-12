@@ -5,8 +5,8 @@ parcel_weight = 0
 stop_program = False
 parcels_sent = 0
 parcel_number = 1
-biggest_gap_in_weight = maximum_weight
-parcel_with_biggest_gap = 1
+biggest_gap_in_weight = 0  # Zmieniłem wartość początkową na 0
+parcel_with_biggest_gap = 0  # Zmieniłem wartość początkową na 0
 
 while not stop_program:
     element = input("Podaj wagę (lub 'q' aby zakończyć): ")
@@ -18,11 +18,8 @@ while not stop_program:
             stop_program = True
         else:
             if parcel_weight + element <= maximum_weight:
-                if biggest_gap_in_weight < maximum_weight - (parcel_weight + element):
-                    biggest_gap_in_weight = maximum_weight - (parcel_weight + element)
-                    parcel_with_biggest_gap = parcel_number
-
-            if parcel_weight + element > maximum_weight:
+                parcel_weight += element
+            else:
                 if parcel_weight > 0:
                     if maximum_weight - parcel_weight > biggest_gap_in_weight:
                         biggest_gap_in_weight = maximum_weight - parcel_weight
@@ -31,14 +28,14 @@ while not stop_program:
                     kilograms_sent += parcel_weight
                 if parcels_sent == parcels_amount:
                     stop_program = True
-                parcel_weight = 0
+                parcel_weight = element
                 parcel_number += 1
-            parcel_weight += element
-            '''biggest_gap_in_weight = maximum_weight - parcel_weight
-            parcel_with_biggest_gap = parcel_number  
-            wygląda na to że porównanie dla pustych paczek należy dodać po
-            dodaniu elementu do paczki - ten kod liczy dobrze, ale za każdym razem bierze puste kg ostatniej paczki nie 
-            porównując przez co if sprawdzający jest nadpisywany'''
+
+# Wyrzuciłem obliczenie biggest gapa poza obrabianie inputów
+if parcel_weight > 0:
+    if maximum_weight - parcel_weight > biggest_gap_in_weight:
+        biggest_gap_in_weight = maximum_weight - parcel_weight
+        parcel_with_biggest_gap = parcel_number
 
 if parcels_sent > 0 or stop_program:
     parcels_sent += 1
@@ -46,7 +43,6 @@ if parcels_sent > 0 or stop_program:
     print(f"Wysłano kilogramów: {kilograms_sent}")
     print(f"Ilość wysłanych paczek: {parcels_sent}")
     print(f"Suma pustych kilogramów: {parcels_sent * maximum_weight - kilograms_sent}")
-    print(f"Paczka z najwieksza iloscia pustych kg: {parcel_with_biggest_gap}")
     if parcel_with_biggest_gap != 0:
         print(f"Najwięcej pustych kilogramów ma paczka {parcel_with_biggest_gap} ({biggest_gap_in_weight}kg)")
 else:
