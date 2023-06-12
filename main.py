@@ -24,14 +24,13 @@ else:
                 if parcel_weight + element <= maximum_weight:
                     parcel_weight += element
                 else:
-                    if parcel_weight > 0:
-                        if maximum_weight - parcel_weight > biggest_gap_in_weight:
-                            biggest_gap_in_weight = maximum_weight - parcel_weight
-                            parcel_with_biggest_gap = parcel_number
-                        parcels_sent += 1
-                        kilograms_sent += parcel_weight
+                    # if parcel_weight > 0:
+                    #     parcels_sent += 1
+                    #     kilograms_sent += parcel_weight / this code is duplicated near the bottom before prints and
+                    #     causes confusion
                     if parcels_sent == parcels_amount:
                         stop_program = True
+
                     parcel_weight = element
                     parcel_number += 1
 
