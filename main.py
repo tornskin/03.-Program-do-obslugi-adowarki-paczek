@@ -17,6 +17,11 @@ while not stop_program:
         if element < 1 or element > 10:
             stop_program = True
         else:
+            if parcel_weight + element <= maximum_weight:
+                if biggest_gap_in_weight < maximum_weight - (parcel_weight + element):
+                    biggest_gap_in_weight = maximum_weight - (parcel_weight + element)
+                    parcel_with_biggest_gap = parcel_number
+
             if parcel_weight + element > maximum_weight:
                 if parcel_weight > 0:
                     if maximum_weight - parcel_weight > biggest_gap_in_weight:
