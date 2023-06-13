@@ -30,23 +30,25 @@ else:
                             parcel_with_biggest_gap = parcel_number
                         parcels_sent += 1
                         kilograms_sent += parcel_weight
-                    if parcels_sent == parcels_amount:
-                        stop_program = True
-                    parcel_weight = element
-                    parcel_number += 1
+                        parcel_weight = element
+                        parcel_number += 1
+                        if parcels_sent >= parcels_amount:
+                            break
 
-    # Calculating biggest gap after inputs have been processed
     if parcel_weight > 0:
-        if maximum_weight - parcel_weight > biggest_gap_in_weight:
+        if parcels_sent >= parcels_amount:
+            pass
+        elif maximum_weight - parcel_weight > biggest_gap_in_weight:
             biggest_gap_in_weight = maximum_weight - parcel_weight
             parcel_with_biggest_gap = parcel_number
 
-    if parcels_sent > 0 or stop_program:
+    if parcels_sent < parcels_amount or stop_program:
         parcels_sent += 1
         kilograms_sent += parcel_weight
-        print(f"Wysłano kilogramów: {kilograms_sent}")
-        print(f"Ilość wysłanych paczek: {parcels_sent}")
-        print(f"Suma pustych kilogramów: {parcels_sent * maximum_weight - kilograms_sent}")
-        print(f"Paczka z największą ilością pustych kg: {parcel_with_biggest_gap}")
-        if parcel_with_biggest_gap != 0:
-            print(f"Najwięcej pustych kilogramów ma paczka {parcel_with_biggest_gap} ({biggest_gap_in_weight}kg)")
+
+    print(f"Wysłano kilogramów: {kilograms_sent}")
+    print(f"Ilość wysłanych paczek: {parcels_sent}")
+    print(f"Suma pustych kilogramów: {parcels_sent * maximum_weight - kilograms_sent}")
+
+    if parcel_with_biggest_gap != 0:
+        print(f"Najwięcej pustych kilogramów ma paczka {parcel_with_biggest_gap} ({biggest_gap_in_weight}kg)")
